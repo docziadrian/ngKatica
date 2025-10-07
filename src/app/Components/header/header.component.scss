@@ -1,0 +1,11 @@
+.d-flex {
+  line-height: 300%;
+  text-align: center;
+  background: rgba($color: #0000, $alpha: 0.2);
+  margin: 0;
+}
+
+i {
+  font-size: clamp(1rem, calc(2rem + 1.069vw), 2.25rem);
+  color: var(--bs-danger);
+}

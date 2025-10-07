@@ -1,0 +1,20 @@
+<p>Kategória kezelés</p>
+<app-catform categoriaInput></app-catform>
+
+<div class="py-5">
+  <h1>Összes kategória megjelenítése</h1>
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">Kategoria név</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let cat of allCategories">
+        <th scope="row">{{ cat.id }}</th>
+        <th scope="row">{{ cat.kategoriaNev }}</th>
+      </tr>
+    </tbody>
+  </table>
+</div>

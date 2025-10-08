@@ -1,1 +1,116 @@
-<p>form works!</p>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-lg-8 align-self-center align-items-center">
+      <div class="card shadow-lg border-0">
+        <div class="card-header bg-danger text-white">
+          <h3 class="mb-0">
+            <i class="bi bi-cloud-upload me-2"></i>
+            Forgalom felvétele
+          </h3>
+        </div>
+        <div class="card-body p-4">
+          <form id="weatherForm">
+            <div class="row mb-4 g-3">
+              <div class="col-md-6">
+                <label for="minHom" class="form-label"> Termék neve </label>
+                <input
+                  [value]="''"
+                  (input)="handleTermekNevInputChange($event)"
+                  type="text"
+                  class="form-control"
+                  placeholder="Vajas keksz"
+                  required
+                />
+              </div>
+              <div class="col-md-6">
+                <label for="maxHom" class="form-label"> Kategória ID </label>
+                <input
+                  [value]="0"
+                  (input)="handleKategoriaIDInputChange($event)"
+                  type="number"
+                  class="form-control"
+                  min="-50"
+                  max="50"
+                  placeholder="Pl. 1"
+                  required
+                />
+              </div>
+              <div class="col-md-6">
+                <label for="maxHom" class="form-label"> Vevő neve </label>
+                <input
+                  [value]=""
+                  (input)="handleVevoNevInputChange($event)"
+                  id="maxHom"
+                  type="text"
+                  class="form-control"
+                  placeholder="Pl. Vevő János"
+                  required
+                />
+              </div>
+              <div class="col-md-6">
+                <label for="maxHom" class="form-label"> Egység </label>
+                <input
+                  [value]="0"
+                  (input)="handleEgysegInputChange($event)"
+                  id="maxHom"
+                  type="number"
+                  class="form-control"
+                  placeholder="Pl. 2"
+                  required
+                />
+              </div>
+              <div class="col-md-6">
+                <label for="maxHom" class="form-label"> Nettó ár </label>
+                <input
+                  [value]="0"
+                  (input)="handleNettoArInputChange($event)"
+                  id="maxHom"
+                  type="number"
+                  class="form-control"
+                  placeholder="Pl. 200"
+                  required
+                />
+              </div>
+              <div class="col-md-6">
+                <label for="maxHom" class="form-label"> Mennyiség </label>
+                <input
+                  [value]="0"
+                  (input)="handleMennyisegInputChange($event)"
+                  id="maxHom"
+                  type="number"
+                  class="form-control"
+                  placeholder="Pl. 1"
+                  required
+                />
+              </div>
+              <div class="col-md-6">
+                <label for="maxHom" class="form-label"> Kiadva </label>
+                <input
+                  [value]="false"
+                  (input)="handleKiadvaInputChange($event)"
+                  id="maxHom"
+                  type="text"
+                  class="form-control"
+                  placeholder="true | false"
+                  required
+                />
+              </div>
+            </div>
+            <div class="col-md-6">
+              <button
+                (click)="handleForgalomFelvetel()"
+                class="btn btn-success mt-2"
+              >
+                Mentés
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<h5
+  class="position-absolute top-50 start-50 text-center translate-middle"
+  id="myAlert"
+></h5>

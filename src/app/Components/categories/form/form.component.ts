@@ -1,6 +1,7 @@
 import { Component, input } from '@angular/core';
 import { fromEvent } from 'rxjs';
 import axios from 'axios';
+import { MessageService } from '../../../Services/MessageService';
 
 @Component({
   selector: 'app-catform',
@@ -10,6 +11,8 @@ import axios from 'axios';
   styleUrl: './form.component.scss',
 })
 export class CatFormComponent {
+  constructor(private messageService: MessageService) {} // Konstruktor
+
   categoriaInput = input.required<string>(); // INPUT mező a HTML form -ban!
 
   bekertKategoriaNev = ''; // Ez a bekért adat a felhasználótol.
@@ -34,5 +37,7 @@ export class CatFormComponent {
     });
     console.log(res.data);
     alert('Kategória mentve!');
+    this.messageService.triggerClick(); // Esemény kiváltása
+    this.bekertKategoriaNev = ''; // INPUT mező ürítése
   }
 }

@@ -1,0 +1,98 @@
+<div class="">
+  <hr />
+  <div class="">Az összes terméket itt jelenik meg.</div>
+
+  <p class="p-2 bg-dark text-success font-monospace" *ngIf="showMSG">
+    {{ messageMSG }}
+  </p>
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">id</th>
+        <th scope="col">termek</th>
+        <th scope="col">kategoriaId</th>
+        <th scope="col">nettoar</th>
+        <th scope="col" colspan="2">Művelet</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let termek of allTermek">
+        <th>{{ termek.id }}</th>
+        <th>{{ termek.termek }}</th>
+        <th>{{ termek.kategoriaNev }}</th>
+        <th>{{ termek.nettoar }}</th>
+
+        <td
+          (click)="onDeleteClick(termek.id)"
+          class="bg-danger align-items-center align-self-center mx-auto"
+        >
+          <i class="bi bi-trash3"></i>
+        </td>
+        <td (click)="onEditClick(termek)" class="bg-warning">
+          <i class="bi bi-pencil-square"></i>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <hr />
+  <!-- Modositas modal -->
+  <div
+    *ngIf="showModal"
+    class="modal-overlay position-fixed top-0 start-0 w-100 h-100 d-flex justify-content-center align-items-center"
+    style="
+      backdrop-filter: blur(5px) brightness(0.5) contrast(0.8) saturate(1.2);
+      background-color: rgba(0, 0, 0, 0.226);
+    "
+  >
+    <div class="modal-container bg-white bg-opacity-10 rounded shadow p-4 w-50">
+      <h2 class="mb-4">Módosítás</h2>
+      <form (ngSubmit)="onSaveChanges()">
+        <div class="mb-3">
+          <label for="termek" class="form-label">Termék</label>
+          <input
+            id="termek"
+            type="text"
+            class="form-control"
+            [(ngModel)]="selectedTermek.termek"
+            name="termek"
+          />
+        </div>
+        <div class="mb-3">
+          <label for="kategoriaId" class="form-label">Kategória</label>
+          <select
+            id="kategoriaId"
+            class="form-select"
+            [(ngModel)]="selectedTermek.kategoriaId"
+            name="kategoriaId"
+          >
+            <option [ngValue]="null" disabled>Válassz kategóriát</option>
+            <option *ngFor="let kat of kategoriak" [ngValue]="kat.id">
+              {{ kat.kategoriaNev }}
+            </option>
+          </select>
+        </div>
+        <div class="mb-3">
+          <label for="nettoar" class="form-label">Nettó Ár</label>
+          <input
+            id="nettoar"
+            type="number"
+            class="form-control"
+            [(ngModel)]="selectedTermek.nettoar"
+            name="nettoar"
+          />
+        </div>
+        <div class="d-flex justify-content-end gap-2">
+          <button
+            type="button"
+            class="btn btn-secondary"
+            (click)="changeModalState()"
+          >
+            Mégse
+          </button>
+          <button type="submit" class="btn btn-success">Mentés</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

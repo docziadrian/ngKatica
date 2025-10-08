@@ -1,1 +1,36 @@
-<p>Forgalom kezelés</p>
+<p>Kategória kezelés</p>
+<app-traficsform
+  termeknevInput=""
+  kategoriaIDInput=""
+  vevoNevInput=""
+  egysegInput=""
+  nettoArInput=""
+  mennyisegInput=""
+  kiadvaInput=""
+></app-traficsform>
+
+<div class="py-5">
+  <h1>Összes kategória megjelenítése</h1>
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">Termék név</th>
+        <th scope="col">Vevő név</th>
+        <th scope="col">Egység</th>
+        <th scope="col">Mennyiség</th>
+        <th scope="col">Ár</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let trafics of allTrafics">
+        <th scope="row">{{ trafics.id }}</th>
+        <th scope="row">{{ trafics.termek }}</th>
+        <th scope="row">{{ trafics.vevo }}</th>
+        <th scope="row">{{ trafics.egyseg }}</th>
+        <th scope="row">{{ trafics.mennyiseg }}</th>
+        <th scope="row">{{ trafics.nettoar }}</th>
+      </tr>
+    </tbody>
+  </table>
+</div>
